@@ -43,7 +43,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#components/schemas/currentUserResponse"
+                $ref: "#/components/schemas/currentUserResponse"
         "400":
           description: Bad Request
         "401":

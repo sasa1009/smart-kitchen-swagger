@@ -142,7 +142,7 @@ export const CurrentUserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCurrentUser(uid: string, accessToken: string, client: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+        async getCurrentUser(uid: string, accessToken: string, client: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CurrentUserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentUser(uid, accessToken, client, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -165,7 +165,7 @@ export const CurrentUserApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCurrentUser(uid: string, accessToken: string, client: string, options?: any): AxiosPromise<object> {
+        getCurrentUser(uid: string, accessToken: string, client: string, options?: any): AxiosPromise<CurrentUserResponse> {
             return localVarFp.getCurrentUser(uid, accessToken, client, options).then((request) => request(axios, basePath));
         },
     };
