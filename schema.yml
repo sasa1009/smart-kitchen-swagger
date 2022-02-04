@@ -10,13 +10,15 @@ servers:
 tags:
   - name: currentUser
     description: ログインユーザー情報
+  - name: presignedUrl
+    description: S3の署名付きURL情報
 paths:
   /auth/sessions:
     get:
       tags:
         - currentUser
-      summary: ログインユーザー情報取得
-      description: ログイン中のユーザーの情報を取得
+      summary: ログイン中のユーザー情報を取得する
+      description: ログイン中のユーザー情報を取得する
       operationId: getCurrentUser
       parameters:
         - name: uid
@@ -44,6 +46,57 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/currentUserResponse"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+  /presigned-url:
+    get:
+      tags:
+        - presignedUrl
+      summary: S3の署名付きURLを取得する
+      description: S3の署名付きURLを取得する
+      operationId: getPresignedUrl
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: userId
+          description: ログイン中のユーザーのID
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: fileName
+          description: S3にアップロードする予定のファイルの名前
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getPresignedUrlResponse"
         "400":
           description: Bad Request
         "401":
@@ -81,5 +134,17 @@ components:
               description: ユーザーの画像のURL
               type: string
               nullable: true
-        
+    getPresignedUrlResponse:
+      description: 署名付きURL情報
+      type: object
+      required:
+        - url
+        - key
+      properties:
+        url:
+          description: ファイルのアップロードに使用する署名付きURL
+          type: string
+        key:
+          description: ファイルのバケットのルートからのパス
+          type: string
     
