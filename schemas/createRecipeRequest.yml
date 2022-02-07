@@ -1,0 +1,80 @@
+description: 新規登録するレシピ情報
+type: object
+required:
+  - title
+  - comment
+  - amount
+  - calorie
+  - main_ingredient
+  - category
+  - tips
+  - ingredients
+  - procedures
+properties:
+  title:
+    description: レシピのタイトル
+    type: string
+  comment:
+    description: コメント
+    type: string
+  amount:
+    description: レシピの分量
+    type: integer
+  calorie:
+    description: レシピの一人分のカロリー
+    type: integer
+  main_ingredient:
+    description: メインの食材
+    type: string
+  category:
+    description: カテゴリー
+    type: string
+  tips:
+    description: コツ・ポイント
+    type: string
+  image_url:
+    description: メイン画像のURL
+    type: string
+  image_key:
+    description: メイン画像のkey
+    type: string
+  ingredients:
+    description: レシピで使用する材料
+    type: array
+    items:
+      type: object
+      required:
+        - index
+        - name
+        - amount
+      properties:
+        index:
+          description: 食材の並び順
+          type: integer
+        name:
+          description: 材料名
+          type: string
+        amount:
+          description: 分量
+          type: string
+  procedures:
+    description: 手順
+    type: array
+    items:
+      type: object
+      required:
+        - index
+        - description
+      properties:
+        index:
+          description: 手順の並び順
+          type: integer
+        description:
+          description: 手順の詳細
+          type: string
+        image_url:
+          description: 手順の画像のURL
+          type: string
+        image_key:
+          description: 手順の画像のkey
+          type: string
