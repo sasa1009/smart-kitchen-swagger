@@ -1,0 +1,15 @@
+description: 更新するユーザー情報
+type: object
+properties:
+  name:
+    description: ユーザー名
+    type: string
+  comment:
+    description: 一言コメント
+    type: string
+  image_url:
+    description: ユーザーの画像のURL
+    type: string
+  image_key:
+    description: ユーザーの画像のkey
+    type: string

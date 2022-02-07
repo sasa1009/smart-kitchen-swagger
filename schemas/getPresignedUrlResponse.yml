@@ -1,0 +1,12 @@
+description: 署名付きURL情報
+type: object
+required:
+  - url
+  - key
+properties:
+  url:
+    description: ファイルのアップロードに使用する署名付きURL
+    type: string
+  key:
+    description: ファイルのバケットのルートからのパス
+    type: string

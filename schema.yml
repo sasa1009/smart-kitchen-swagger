@@ -45,7 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/currentUserResponse"
+                $ref: "./schemas/currentUserResponse.yml"
         "400":
           description: Bad Request
         "401":
@@ -89,14 +89,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/updateCurrentUserRequest"
+              $ref: "./schemas/updateCurrentUserRequest.yml"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/currentUserResponse"
+                $ref: "./schemas/currentUserResponse.yml"
         "400":
           description: Bad Request
         "401":
@@ -147,7 +147,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/getPresignedUrlResponse"
+                $ref: "./schemas/getPresignedUrlResponse.yml"
         "400":
           description: Bad Request
         "401":
