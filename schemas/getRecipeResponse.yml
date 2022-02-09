@@ -1,0 +1,111 @@
+description: 単一のレシピ情報のルートプロパティ
+type: object
+required:
+  - recipe
+properties:
+  recipe:
+    description: 単一のレシピ情報
+    type: object
+    required:
+      - id
+      - title
+      - comment
+      - amount
+      - calorie
+      - main_ingredient
+      - category
+      - tips
+      - image_url
+      - user
+      - ingredients
+      - procedures
+    properties:
+      id:
+        description: レシピのID
+        type: integer
+      title:
+        description: レシピのタイトル
+        type: string
+      comment:
+        description: コメント
+        type: string
+      amount:
+        description: レシピの分量
+        type: integer
+      calorie:
+        description: レシピの一人分のカロリー
+        type: integer
+      main_ingredient:
+        description: メインの食材
+        type: string
+      category:
+        description: カテゴリー
+        type: string
+      tips:
+        description: コツ・ポイント
+        type: string
+      image_url:
+        description: メイン画像のURL
+        type: string
+        nullable: true
+      user:
+        description: レシピを作成したユーザー情報
+        type: object
+        required:
+          - id
+          - name
+          - comment
+          - image_url
+        properties:
+          id:
+            description: ユーザーのID
+            type: integer
+          name:
+            description: ユーザー名
+            type: string
+          comment:
+            description: 一言コメント
+            type: string
+          image_url:
+            description: ユーザーの画像のURL
+            type: string
+            nullable: true
+      ingredients:
+        description: レシピで使用する材料
+        type: array
+        items:
+          type: object
+          required:
+            - index
+            - name
+            - amount
+          properties:
+            index:
+              description: 食材の並び順
+              type: integer
+            name:
+              description: 材料名
+              type: string
+            amount:
+              description: 分量
+              type: string
+      procedures:
+        description: 手順
+        type: array
+        items:
+          type: object
+          required:
+            - index
+            - description
+            - image_url
+          properties:
+            index:
+              description: 手順の並び順
+              type: integer
+            description:
+              description: 手順の詳細
+              type: string
+            image_url:
+              description: 手順の画像のURL
+              type: string
+              nullable: true

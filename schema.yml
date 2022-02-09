@@ -201,3 +201,30 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
+  /recipes/{recipeId}:
+    get:
+      tags:
+        - recipes
+      summary: 単一のレシピ情報を取得する
+      description: 単一のレシピ情報を取得する
+      operationId: getRecipe
+      parameters:
+        - name: recipeId
+          description: レシピのID
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/getRecipeResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error

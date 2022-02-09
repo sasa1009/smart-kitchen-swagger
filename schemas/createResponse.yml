@@ -1,8 +1,8 @@
 description: 登録が成功した場合のレスポンス
 type: object
 required:
-  - message
+  - id
 properties:
-  message:
-    description: 登録が成功した場合のメッセージ
-    type: string
+  id:
+    description: 登録したリソースのID
+    type: integer
