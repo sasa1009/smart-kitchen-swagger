@@ -10,6 +10,8 @@ required:
   - tips
   - ingredients
   - procedures
+  - image_url
+  - image_key
 properties:
   title:
     description: レシピのタイトル
@@ -35,9 +37,11 @@ properties:
   image_url:
     description: メイン画像のURL
     type: string
+    nullable: true
   image_key:
     description: メイン画像のkey
     type: string
+    nullable: true
   ingredients:
     description: レシピで使用する材料
     type: array
@@ -65,6 +69,8 @@ properties:
       required:
         - index
         - description
+        - image_url
+        - image_key
       properties:
         index:
           description: 手順の並び順
@@ -75,6 +81,8 @@ properties:
         image_url:
           description: 手順の画像のURL
           type: string
+          nullable: true
         image_key:
           description: 手順の画像のkey
           type: string
+          nullable: true
