@@ -1,0 +1,70 @@
+description: レシピ情報一覧のルートプロパティ
+type: object
+required:
+  - recipes
+  - meta
+properties:
+  recipes:
+    description: レシピ情報の一覧
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - title
+        - calorie
+        - main_ingredient
+        - category
+        - image_url
+        - user
+      properties:
+        id:
+          description: レシピのID
+          type: integer
+        title:
+          description: レシピのタイトル
+          type: string
+        calorie:
+          description: レシピの一人分のカロリー
+          type: integer
+        main_ingredient:
+          description: メインの食材
+          type: string
+        category:
+          description: カテゴリー
+          type: string
+        image_url:
+          description: メイン画像のURL
+          type: string
+          nullable: true
+        user:
+          description: レシピを作成したユーザー情報
+          type: object
+          required:
+            - id
+            - name
+            - comment
+            - image_url
+          properties:
+            id:
+              description: ユーザーのID
+              type: integer
+            name:
+              description: ユーザー名
+              type: string
+            comment:
+              description: 一言コメント
+              type: string
+            image_url:
+              description: ユーザーの画像のURL
+              type: string
+              nullable: true
+  meta:
+    description: 追加情報
+    type: object
+    required:
+      - total
+    properties:
+      total:
+        description: レシピ情報の総数
+        type: integer

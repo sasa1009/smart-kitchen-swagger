@@ -157,6 +157,38 @@ paths:
         "500":
           description: Internal Server Error
   /recipes:
+    get:
+      tags:
+        - recipes
+      summary: レシピ情報を一覧取得する
+      description: レシピ情報を一覧取得する
+      operationId: getRecipes
+      parameters:
+        - name: limit
+          description: 取得するレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: offset
+          description: 取得をスキップするレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/getRecipesResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
     post:
       tags:
         - recipes
