@@ -1,0 +1,28 @@
+description: 単一のユーザー情報のルートプロパティ
+type: object
+required:
+  - user
+properties:
+  user:
+    description: 単一のユーザー情報
+    type: object
+    required:
+      - id
+      - name
+      - comment
+      - image_url
+    properties:
+      id:
+        description: ユーザーID
+        type: integer
+      name:
+        description: ユーザー名
+        type: string
+      comment:
+        description: 一言コメント
+        type: string
+        nullable: true
+      image_url:
+        description: ユーザーの画像のURL
+        type: string
+        nullable: true
