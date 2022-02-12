@@ -301,6 +301,24 @@ paths:
       description: 単一のレシピ情報を取得する
       operationId: getRecipe
       parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
         - name: recipeId
           description: レシピのID
           in: path

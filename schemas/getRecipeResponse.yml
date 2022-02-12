@@ -16,6 +16,7 @@ properties:
       - category
       - tips
       - image_url
+      - is_favorited
       - user
       - ingredients
       - procedures
@@ -48,6 +49,9 @@ properties:
         description: メイン画像のURL
         type: string
         nullable: true
+      is_favorited:
+        description: お気に入り登録済みか
+        type: boolean
       user:
         description: レシピを作成したユーザー情報
         type: object
