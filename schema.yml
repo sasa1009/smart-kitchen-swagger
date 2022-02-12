@@ -204,6 +204,18 @@ paths:
           required: true
           schema:
             type: number
+        - name: category
+          description: 絞り込みを行うカテゴリー
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: main_ingredient
+          description: 絞り込みを行うメイン食材
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
