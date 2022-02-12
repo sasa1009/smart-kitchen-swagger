@@ -16,6 +16,8 @@ tags:
     description: S3の署名付きURL情報
   - name: recipes
     description: レシピ情報
+  - name: favorites
+    description: お気に入り情報
 paths:
   /auth/sessions:
     get:
@@ -192,6 +194,24 @@ paths:
       description: レシピ情報を一覧取得する
       operationId: getRecipes
       parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
         - name: limit
           description: 取得するレシピ情報の件数
           in: query
@@ -300,3 +320,89 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
+  /favorites:
+    post:
+      tags:
+        - favorites
+      summary: お気に入り情報を登録する
+      description: お気に入り情報を登録する
+      operationId: createFavorite
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: recipe_id
+          description: お気に入りに登録するレシピのID
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        "201":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/createResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - favorites
+      summary: お気に入り情報を削除する
+      description: お気に入り情報を削除する
+      operationId: deleteFavorite
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: recipe_id
+          description: お気に入りを削除するレシピのID
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: OK
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+

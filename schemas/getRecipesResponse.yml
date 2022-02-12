@@ -16,6 +16,8 @@ properties:
         - main_ingredient
         - category
         - image_url
+        - is_favorited
+        - favorited_count
         - user
       properties:
         id:
@@ -37,6 +39,12 @@ properties:
           description: メイン画像のURL
           type: string
           nullable: true
+        is_favorited:
+          description: お気に入り登録済みか
+          type: boolean
+        favorited_count:
+          description: お気に入りの登録数
+          type: integer
         user:
           description: レシピを作成したユーザー情報
           type: object
