@@ -195,19 +195,19 @@ paths:
       operationId: getRecipes
       parameters:
         - name: uid
-          description: devise-token-auth用のuid
+          description: devise-token-auth用のuid(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
             type: string
         - name: access-token
-          description: devise-token-auth用のaccess-token
+          description: devise-token-auth用のaccess-token(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
             type: string
         - name: client
-          description: devise-token-auth用のclient
+          description: devise-token-auth用のclient(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
@@ -302,19 +302,19 @@ paths:
       operationId: getRecipe
       parameters:
         - name: uid
-          description: devise-token-auth用のuid
+          description: devise-token-auth用のuid(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
             type: string
         - name: access-token
-          description: devise-token-auth用のaccess-token
+          description: devise-token-auth用のaccess-token(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
             type: string
         - name: client
-          description: devise-token-auth用のclient
+          description: devise-token-auth用のclient(未ログインの場合は空文字を指定)
           in: header
           required: true
           schema:
@@ -332,6 +332,120 @@ paths:
             application/json:
               schema:
                 $ref: "./schemas/getRecipeResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+  /recipes/{user_id}/user:
+    get:
+      tags:
+        - recipes
+      summary: ユーザーが作成したレシピ情報の一覧を取得する
+      description: ユーザーが作成したレシピ情報の一覧を取得する
+      operationId: getUsersRecipes
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          description: レシピを登録したユーザーのID
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: limit
+          description: 取得するレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: offset
+          description: 取得をスキップするレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/getRecipesResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+  /recipes/{user_id}/favorite:
+    get:
+      tags:
+        - recipes
+      summary: ユーザーがお気に入りに登録したレシピ情報の一覧を取得する
+      description: ユーザーがお気に入りに登録したレシピ情報の一覧を取得する
+      operationId: getFavoritedRecipes
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          description: レシピを登録したユーザーのID
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: limit
+          description: 取得するレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: offset
+          description: 取得をスキップするレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/getRecipesResponse.yml"
         "400":
           description: Bad Request
         "401":
