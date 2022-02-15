@@ -11,6 +11,10 @@ properties:
       - name
       - comment
       - image_url
+      - is_following
+      - is_followed
+      - following_count
+      - follower_count
     properties:
       id:
         description: ユーザーID
@@ -26,3 +30,15 @@ properties:
         description: ユーザーの画像のURL
         type: string
         nullable: true
+      is_following:
+        description: ユーザーをフォローしているか
+        type: boolean
+      is_followed:
+        description: ユーザーからフォローされているか
+        type: boolean
+      following_count:
+        description: ユーザーが他のユーザーをフォローしている人数
+        type: integer
+      follower_count:
+        description: ユーザーが他のユーザーからフォローされている人数
+        type: integer

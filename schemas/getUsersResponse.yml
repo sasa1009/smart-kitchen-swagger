@@ -1,0 +1,39 @@
+description: ユーザー情報一覧のルートプロパティ
+type: object
+required:
+  - users
+  - meta
+properties:
+  users:
+    description: ユーザー情報の一覧
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - name
+        - image_url
+        - is_following
+      properties:
+        id:
+          description: ユーザーID
+          type: integer
+        name:
+          description: ユーザー名
+          type: string
+        image_url:
+          description: ユーザーの画像のURL
+          type: string
+          nullable: true
+        is_following:
+          description: ユーザーをフォローしているか
+          type: boolean
+  meta:
+    description: 追加情報
+    type: object
+    required:
+      - total
+    properties:
+      total:
+        description: ユーザー情報の総数
+        type: integer
