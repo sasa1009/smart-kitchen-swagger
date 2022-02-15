@@ -60,9 +60,6 @@ properties:
             name:
               description: ユーザー名
               type: string
-            comment:
-              description: 一言コメント
-              type: string
             image_url:
               description: ユーザーの画像のURL
               type: string
