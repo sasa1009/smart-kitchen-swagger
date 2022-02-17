@@ -1,0 +1,40 @@
+description: 食事記録のテンプレート情報
+type: object
+required:
+  - food_log_templates
+  - meta
+properties:
+  food_log_templates:
+    description: 食事記録のテンプレート情報の配列
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - name
+        - calorie
+        - recipe_id
+      properties:
+        id:
+          description: 食事記録のテンプレートのID
+          type: integer
+        name:
+          description: 食品名
+          type: string
+        calorie:
+          description: カロリー(kcal)
+          type: integer
+        recipe_id:
+          description: レシピのID
+          type: integer
+          nullable: true
+  meta:
+    description: 追加情報
+    type: object
+    required:
+      - total
+    properties:
+      total:
+        description: 食事記録のテンプレート情報の総数
+        type: integer
+        

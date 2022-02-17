@@ -1,0 +1,37 @@
+description: 新規登録する食事記録情報
+type: object
+required:
+  - food_logs
+properties:
+  food_logs:
+    description: 新規登録する食事記録情報の配列
+    type: array
+    items:
+      type: object
+      required:
+        - name
+        - calorie
+        - amount
+        - meal_date_time
+        - recipe_id
+        - is_create_template
+      properties:
+        name:
+          description: 食品名
+          type: string
+        calorie:
+          description: カロリー(kcal)
+          type: integer
+        amount:
+          description: 数量
+          type: integer
+        meal_date_time:
+          description: 食事をした日時
+          type: string
+        recipe_id:
+          description: レシピのID
+          type: integer
+          nullable: true
+        is_create_template:
+          description: テンプレートを作成するか
+          type: boolean
