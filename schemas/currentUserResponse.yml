@@ -7,14 +7,18 @@ properties:
     description: ログイン中のユーザー情報
     type: object
     required:
-      - id
       - name
       - comment
       - image_url
-      - is_following
-      - is_followed
       - following_count
       - follower_count
+      - is_set_weight_loss_target
+      - height
+      - weight
+      - sex
+      - age
+      - activity_amount
+      - weight_loss_target
     properties:
       id:
         description: ユーザーID
@@ -30,15 +34,38 @@ properties:
         description: ユーザーの画像のURL
         type: string
         nullable: true
-      is_following:
-        description: ユーザーをフォローしているか
-        type: boolean
-      is_followed:
-        description: ユーザーからフォローされているか
-        type: boolean
       following_count:
         description: ユーザーが他のユーザーをフォローしている人数
         type: integer
       follower_count:
         description: ユーザーが他のユーザーからフォローされている人数
         type: integer
+      is_set_weight_loss_target:
+        description: 減量目標を設定するか
+        type: boolean
+      height:
+        description: 身長
+        type: integer
+        nullable: true
+      weight:
+        description: 体重
+        type: integer
+        nullable: true
+      sex:
+        description: 性別
+        type: string
+        nullable: true
+      age:
+        description: 年齢
+        type: integer
+        nullable: true
+      activity_amount:
+        description: 活動量
+        type: number
+        format: float
+        nullable: true
+      weight_loss_target:
+        description: 1ヶ月あたりの減量目標(kg)
+        type: number
+        format: float
+        nullable: true

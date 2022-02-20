@@ -7,9 +7,41 @@ properties:
   comment:
     description: 一言コメント
     type: string
+    nullable: true
   image_url:
     description: ユーザーの画像のURL
     type: string
+    nullable: true
   image_key:
     description: ユーザーの画像のkey
     type: string
+    nullable: true
+  is_set_weight_loss_target:
+    description: 減量目標を設定するか
+    type: boolean
+  height:
+    description: 身長
+    type: integer
+    nullable: true
+  weight:
+    description: 体重
+    type: integer
+    nullable: true
+  sex:
+    description: 性別
+    type: string
+    nullable: true
+  age:
+    description: 年齢
+    type: integer
+    nullable: true
+  activity_amount:
+    description: 活動量
+    type: number
+    format: float
+    nullable: true
+  weight_loss_target:
+    description: 1ヶ月あたりの減量目標(kg)
+    type: number
+    format: float
+    nullable: true
