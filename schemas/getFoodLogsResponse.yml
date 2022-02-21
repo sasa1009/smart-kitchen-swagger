@@ -27,7 +27,8 @@ properties:
           type: integer
         amount:
           description: 数量
-          type: integer
+          type: number
+          format: float
         recipe_id:
           description: レシピのID
           type: integer

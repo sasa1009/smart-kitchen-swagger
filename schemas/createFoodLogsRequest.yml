@@ -24,7 +24,8 @@ properties:
           type: integer
         amount:
           description: 数量
-          type: integer
+          type: number
+          format: float
         meal_date_time:
           description: 食事をした日時
           type: string
