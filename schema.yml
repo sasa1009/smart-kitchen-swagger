@@ -362,6 +362,12 @@ paths:
           required: true
           schema:
             type: number
+        - name: search_keyword
+          description: 絞り込みを行う検索キーワード
+          in: query
+          required: true
+          schema:
+            type: string
         - name: category
           description: 絞り込みを行うカテゴリー
           in: query
