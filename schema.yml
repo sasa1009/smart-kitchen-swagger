@@ -653,6 +653,69 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
+  /recipe_ranking:
+    get:
+      tags:
+        - recipes
+      summary: 指定した期間で最も多くお気に入りに登録されたレシピ情報の一覧を取得する
+      description: 指定した期間で最も多くお気に入りに登録されたレシピ情報の一覧を取得する
+      operationId: getRecipeRanking
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient(未ログインの場合は空文字を指定)
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: limit
+          description: 取得するレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: offset
+          description: 取得をスキップするレシピ情報の件数
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: from
+          description: 取得するレシピがお気に入りに登録された期間の始期
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: to
+          description: 取得するレシピがお気に入りに登録された期間の終期
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/getRecipesResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
   /favorites:
     post:
       tags:
