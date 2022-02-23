@@ -16,6 +16,7 @@ properties:
       - category
       - tips
       - image_url
+      - image_key
       - is_favorited
       - user
       - ingredients
@@ -47,6 +48,10 @@ properties:
         type: string
       image_url:
         description: メイン画像のURL
+        type: string
+        nullable: true
+      image_key:
+        description: メイン画像のkey
         type: string
         nullable: true
       is_favorited:
@@ -102,6 +107,7 @@ properties:
             - index
             - description
             - image_url
+            - image_key
           properties:
             index:
               description: 手順の並び順
@@ -111,5 +117,9 @@ properties:
               type: string
             image_url:
               description: 手順の画像のURL
+              type: string
+              nullable: true
+            image_key:
+              description: 手順の画像のkey
               type: string
               nullable: true

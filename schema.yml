@@ -437,7 +437,7 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
-  /recipes/{recipeId}:
+  /recipes/{id}:
     get:
       tags:
         - recipes
@@ -463,7 +463,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: recipeId
+        - name: id
           description: レシピのID
           in: path
           required: true
@@ -476,6 +476,56 @@ paths:
             application/json:
               schema:
                 $ref: "./schemas/getRecipeResponse.yml"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+    patch:
+      tags:
+        - recipes
+      summary: レシピ情報を更新する
+      description: レシピ情報を更新する
+      operationId: updateRecipe
+      parameters:
+        - name: uid
+          description: devise-token-auth用のuid
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: access-token
+          description: devise-token-auth用のaccess-token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: client
+          description: devise-token-auth用のclient
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: id
+          description: レシピのID
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/createRecipeRequest.yml"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/createResponse.yml"
         "400":
           description: Bad Request
         "401":
