@@ -1,0 +1,46 @@
+description: 通知情報
+type: object
+required:
+  - notifications
+  - meta
+properties:
+  notifications:
+    description: 通知情報の配列
+    type: array
+    items:
+      type: object
+      required:
+        - sender_id
+        - sender_name
+        - sender_image_url
+        - recipe_id
+        - recipe_title
+      properties:
+        sender_id:
+          description: 通知を送信したユーザーのID
+          type: integer
+        sender_name:
+          description: 通知を送信したユーザーの名前
+          type: string
+          nullable: true
+        sender_image_url:
+          description: 通知を送信したユーザーの画像のURL
+          type: string
+          nullable: true
+        recipe_id:
+          description: レシピのID
+          type: integer
+          nullable: true
+        recipe_title:
+          description: レシピのタイトル
+          type: string
+          nullable: true
+  meta:
+    description: 追加情報
+    type: object
+    required:
+      - total
+    properties:
+      total:
+        description: 通知情報の総数
+        type: integer
