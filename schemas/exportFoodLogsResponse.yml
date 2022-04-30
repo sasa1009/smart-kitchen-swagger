@@ -1,0 +1,52 @@
+description: 食事記録情報
+type: object
+required:
+  - food_logs
+  - meta
+properties:
+  food_logs:
+    description: 食事記録情報の配列
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - name
+        - calorie
+        - amount
+        - recipe_id
+        - meal_date_time
+        - user_id
+      properties:
+        id:
+          description: 食事記録情報のID
+          type: integer
+        name:
+          description: 食品名
+          type: string
+        calorie:
+          description: カロリー(kcal)
+          type: integer
+        amount:
+          description: 数量
+          type: number
+          format: float
+        recipe_id:
+          description: レシピのID
+          type: integer
+          nullable: true
+        meal_date_time:
+          description: 食事した日時
+          type: string
+        user_id:
+          description: ユーザーID
+          type: integer
+  meta:
+    description: 追加情報
+    type: object
+    required:
+      - total
+    properties:
+      total:
+        description: 食事記録情報の総数
+        type: integer
